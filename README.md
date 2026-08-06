@@ -7,7 +7,7 @@ An R pipeline for processing, analyzing, and visualizing label-free quantitative
 The workflow is divided into 7 sequential modules, each handling a specific step of the proteomics analysis:
 
 *   Module 01: Differential Expression Analysis (DE) - Calculates statistics, Fold Changes, p-values (ANOVA), and generates Volcano Plots.
-*   Module 02: Heatmaps- Calculates Z-scores and generates heatmaps from DE results (UP/DOWN).
+*   Module 02: Heatmaps- Generates heatmaps from DE results (UP/DOWN).
 *   Module 03: Venn Diagrams & Signature Extraction- Identifies intersecting and exclusive proteins between comparisons to define specific biomarker signatures.
 *   Module 04: Lollipop Plots- Visualizes exclusively altered proteins (Log2FC).
 *   Module 05: Protein-Protein Interaction (PPI) Networks- Maps Fold Change data onto STRING networks using `igraph` and `ggraph`.
