@@ -1,6 +1,6 @@
 # Proteomics Differential Expression & Network Analysis Pipeline
 
-An R pipeline for processing, analyzing, and visualizing label-free quantitative proteomics data. Designed for mice tear fluid proteomics (Nondiabetic vs. Diabetic). This pipeline was created for Differential Expression Analysis and STRING network visualization for the manuscript titled "..." . This pipeline was based on https://github.com/Iaguilaror/low_BMD_in_PMWMX 
+An R pipeline for processing, analyzing, and visualizing label-free quantitative proteomics data. Designed for mice tear fluid proteomics (Nondiabetic vs. Diabetic). This pipeline was created for Differential Expression Analysis and STRING network visualization for the manuscript titled "Tear Fluid as an Early Molecular Diagnostic Window in a Type 1 Diabetic Mouse Model" . This pipeline was based on https://github.com/Iaguilaror/low_BMD_in_PMWMX 
 
 # Pipeline Overview
 
