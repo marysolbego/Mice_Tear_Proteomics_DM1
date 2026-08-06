@@ -49,9 +49,7 @@ To run this pipeline, you will need:
 -Enrichment files: Exported as TSV (e.g., enrichment.Process.tsv, enrichment.InterPro.tsv, enrichment.all.tsv).
 
 # Usage
-The scripts are designed to be run interactively. Execute the script in RStudio. You do not need to hardcode file paths; the pipeline uses ``choose.files()`` and ``choose.dir()`` to open native file dialogs.
 
-Note: The file selection functions are optimized for Windows. Mac/Linux users may need to replace these functions with file.choose() or provide absolute paths.
 
 # Important Notes & Customization
 If you are adapting this pipeline for your own dataset, please review the following parameters:
