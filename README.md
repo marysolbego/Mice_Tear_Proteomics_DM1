@@ -4,15 +4,21 @@ An R pipeline for processing, analyzing, and visualizing label-free quantitative
 
 # Pipeline Overview
 
-The workflow is divided into 7 sequential modules, each handling a specific step of the proteomics analysis:
+The workflow is divided into 3 main R scripts, each for an specific phase of the proteomic analysis: 
 
-*   Module 01: Differential Expression Analysis (DE) - Calculates statistics, Fold Changes, p-values (ANOVA), and generates Volcano Plots.
-*   Module 02: Heatmaps- Generates heatmaps from DE results (UP/DOWN).
-*   Module 03: Venn Diagrams & Signature Extraction- Identifies intersecting and exclusive proteins between comparisons to define specific biomarker signatures.
-*   Module 04: Lollipop Plots- Visualizes exclusively altered proteins (Log2FC).
-*   Module 05: Protein-Protein Interaction (PPI) Networks- Maps Fold Change data onto STRING networks using `igraph` and `ggraph`.
-*   Module 06: Composite Network & Enrichment plots- Assembles PPI networks and GO/InterPro enrichment dot plots.
-*   Module 07: Supplementary Tables Generator- Formats STRING enrichment outputs into  Excel workbooks.
+1. Differential Expression Analysis (DEA): Calculates descriptive statistics, Log2 Fold Changes, and ANOVA p-values. Generates annotated Volcano Plots and outputs results in Excel/CSV formats. Heatmaps: Plots heatmaps for significant proteins (UP/DOWN).
+Venn Diagrams: Identifies intersecting and altered proteins across longitudinal comparisons to define specific biomarker signatures.
+Lollipop Plots:Visualizes the altered proteins (Log2FC) of the specific diabetic signature.
+Multivariate Statistics: Performs condition-specific Principal Component Analysis (PCA) and a Combined Longitudinal PCA with PERMANOVA to track disease progression trajectories.
+
+2. PPI Network Analysis for Diabetic Signature: Integrates the diabetic biomarker signature (from the previous step) with the STRING interaction database.
+
+3. PPI Network & Enrichment Analysis : Builds the network 1-month Nondiabetic vs. 1-month Diabetic.
+Enrichment Dot Plots: Visualizes Gene Ontology (GO - Biological Process) and InterPro Functional Domains enrichment.
+Supplementary Tables: Extracts the STRING enrichment TSV outputs in a table. 
+
+
+
 
 # Prerequisites & Installation
 
@@ -20,15 +26,15 @@ This pipeline requires **R (>= 4.1.0)**.
 Please install the following CRAN and Bioconductor packages before running the scripts:
 
 
-# CRAN Packages
+## CRAN Packages
 
 ```R
 
 install.packages(c("tidyverse", "janitor", "matrixStats", "ggplot2", "cowplot", 
                    "ggsci", "ggrepel", "openxlsx", "readxl", "ggvenn", 
-                   "patchwork", "igraph", "ggraph", "tidygraph"))
+                   "patchwork", "igraph", "ggraph", "tidygraph", "vegan", "ggpubr"))
 ```
-# Bioconductor Packages
+## Bioconductor Packages
 
 ```R
 if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
@@ -38,33 +44,22 @@ BiocManager::install("ComplexHeatmap")
 # Data Requirements
 To run this pipeline, you will need:
 
--Raw Quantification Data: CSV files exported from your proteomics software (e.g., Progenesis). Ensure it contains columns for accession, peptides, fold change, and ANOVA p-values.
-
--Sample Sheet: A .csv containing sample metadata (e.g., column sample and column condition).
-
--STRING Database Exports (For Modules 5-7):
-
--Network edges: Exported as string_interactions.tsv.
-
--Enrichment files: Exported as TSV (e.g., enrichment.Process.tsv, enrichment.InterPro.tsv, enrichment.all.tsv).
-
-# Usage
+1. Raw_data:
+CSV files exported from your proteomics software (e.g., Progenesis). Ensure it contains columns for accession, peptides, fold change, and ANOVA p-values. File names must follow the convention: `ConditionA_vs_ConditionB_total_proteins.csv`.
+2.Sample Sheet (Raw_data/sample_sheet.csv):
+A metadata CSV containing at least two columns: muestra (sample ID matching raw data headers) and condition.
+3. STRING Database Exports:
+Network edges: Exported from STRING as string_interactions.tsv.
+Enrichment files:Exported from STRING as TSV files (e.g., enrichment.Process.tsv, enrichment.InterPro.tsv, enrichment.all.tsv).
 
 
-# Important Notes & Customization
-If you are adapting this pipeline for your own dataset, please review the following parameters:
-
-Module 01: The significance thresholds are set to p-value < 0.05 and Fold Change = 1.5 (ratio_threshold <- log2(1.5)). Change these in the Define Statistical Parameters section if needed.
-
-Module 02: Column extraction currently restricts to 3 replicates per condition (cols_cond1[1:3]). Modify this line if your N > 3.
-
-Module 04: The Lollipop plot height is optimized (height = 9) for ~40 genes. If your signature has significantly more or fewer proteins, adjust the ggsave() height parameter to prevent overlapping text.
-
-Module 06: Contains manual gene name mapping (e.g., Tf -> Trf) to correct specific identifier mismatches between the raw dataset and the STRING database. Users must adjust or remove this case_when mapping to fit their own datasets.
-
-# License
---- 
-
-# Citation
-If you use this pipeline in your research, please cite the associated article:
 ---
+
+## License
+
+---
+
+## Citation
+
+## If you use this pipeline in your research, please cite the following article:
+
