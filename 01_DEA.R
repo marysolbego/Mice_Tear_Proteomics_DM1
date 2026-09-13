@@ -596,7 +596,7 @@ for (current_file in raw_files) {
 }
 
 
-#Combined Longitudinal PCA & PERMANOVA (Exact 12 Samples)
+#PCA & PERMANOVA
 
 
 cond1 <- "Control_1_mes"
