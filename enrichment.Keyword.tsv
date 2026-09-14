@@ -1,0 +1,2 @@
+#term ID	term description	observed gene count	background gene count	strength	signal	false discovery rate	matching proteins in your network (IDs)	matching proteins in your network (labels)
+KW-0273	Eye lens protein	9	10	1.09	1.07	6.86e-05	10090.ENSMUSP00000019192,10090.ENSMUSP00000027090,10090.ENSMUSP00000031286,10090.ENSMUSP00000077693,10090.ENSMUSP00000107955,10090.ENSMUSP00000108004,10090.ENSMUSP00000109698,10090.ENSMUSP00000112618,10090.ENSMUSP00000149803	Cryaa,Crygb,Crybb1,Cryba1,Crybb2,Cryba4,Crygc,Crybb3,Cryab
